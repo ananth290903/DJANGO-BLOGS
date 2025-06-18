@@ -12,14 +12,13 @@
 
 {% block content %}
     <section id="summary">
-	  <h2>Post Title</h2>
+	  <h2>{{post.title}}</h2>
 	  <article>
 		<img src="{% static 'blog/images/mountain.png' %}">
-		 <address>
+		 <address>{{post.author}}</address>
 			<div>
-				Last Updated on <time>10 July 2024</time>
+				Last Updated on <time>{{post.date|date:"d M Y"}}</time>
 			</div>
-	  </address>
 	  </article>
 	</section>
 

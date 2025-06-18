@@ -71,6 +71,8 @@ all_posts=[
     #thesee are the dummy posts and info related to them
 ]
 
+#View to get sorted pages
+
 
 def get_date(post):
     return post.get('date')
@@ -86,11 +88,17 @@ def starting_page(request):
     #posts can be directly accessed from the templates inside blog project
 
 def posts(request):
-    return render(request,"blog/all-posts.html")
+    return render(request,"blog/all-posts.html",{"all_posts":all_posts})
+
+
+'''   
 
 def post_detail(request,slug):
-    return render(request,"blog/post-detail.html")
+    return render(request,"blog/post-detail.html") '''
 
+def post_detail(request,slug):
+    identified_post=next(post for post in all_posts if post['slug']==slug)
+    return render(request,"blog/post-detail.html",{"post":identified_post})
 
 
 
